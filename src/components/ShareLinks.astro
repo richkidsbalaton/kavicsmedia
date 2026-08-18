@@ -8,38 +8,28 @@ const shareLinks = [
   {
     name: "WhatsApp",
     href: "https://wa.me/?text=",
-    linkTitle: `Share this post via WhatsApp`,
+    linkTitle: `Megosztás WhatsAppon`,
   },
   {
     name: "Facebook",
     href: "https://www.facebook.com/sharer.php?u=",
-    linkTitle: `Share this post on Facebook`,
-  },
-  {
-    name: "Twitter",
-    href: "https://twitter.com/intent/tweet?url=",
-    linkTitle: `Tweet this post`,
+    linkTitle: `Megosztás Facebookon`,
   },
   {
     name: "Telegram",
     href: "https://t.me/share/url?url=",
-    linkTitle: `Share this post via Telegram`,
-  },
-  {
-    name: "Pinterest",
-    href: "https://pinterest.com/pin/create/button/?url=",
-    linkTitle: `Share this post on Pinterest`,
+    linkTitle: `Megosztás Telegramon`,
   },
   {
     name: "Mail",
-    href: "mailto:?subject=See%20this%20post&body=",
-    linkTitle: `Share this post via email`,
+    href: "mailto:?subject=Ezt%20olvasd%20el&body=",
+    linkTitle: `Megosztás e-mailben`,
   },
 ] as const;
 ---
 
 <div class={`social-icons`}>
-  <span class="italic">Share this post on:</span>
+  <span class="italic">Oszd meg a riportot:</span>
   <div class="text-center">
     {
       shareLinks.map(social => (
