@@ -150,6 +150,14 @@
   .display-none {
     @apply hidden;
   }
+  /* YouTube beágyazás a cikkekben */
+  .youtube-embed {
+    @apply my-6 w-full overflow-hidden rounded-md;
+    aspect-ratio: 16 / 9;
+  }
+  .youtube-embed iframe {
+    @apply h-full w-full border-0;
+  }
   .focus-outline {
     @apply outline-2 outline-offset-1 outline-skin-fill focus-visible:no-underline focus-visible:outline-dashed;
   }

@@ -1,36 +1,42 @@
 ---
 layout: ../layouts/AboutLayout.astro
-title: "About"
+title: "Miért Kavics?"
 ---
 
-AstroPaper is a minimal, responsive and SEO-friendly Astro blog theme. I designed and crafted this based on [my personal blog](https://satnaing.dev/blog).
+A kavics nem látványos. Nem csillog, nem kiabál. De ott van mindenhol — az utak szélén, a falvak főterén, az emberek cipőjében. Ha lehajolsz érte és megnézed közelről, kiderül: mindegyik más, és mindegyiknek története van.
 
-This theme is aimed to be accessible out of the box. Light and dark mode are supported by
-default and additional color schemes can also be configured.
+Mi ezekért a történetekért hajolunk le.
 
-This theme is self-documented \_ which means articles/posts in this theme can also be considered as documentations. So, see the documentation for more info.
+## Kik vagyunk?
 
-<div>
-  <img src="/assets/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
-</div>
+A KAVICS-ot televíziós riporterek és műsorvezetők készítik, akik évek óta terepen dolgoznak.
 
-## Tech Stack
+A televíziós múltunkból hoztuk a szakmát: a kérdezéstechnikát, a vágást, a képi igényességet. Amit ott hagytunk: a formátumkényszert, a nézettségi verseny diktálta felületességet, és azt a három percet, amibe egy emberi sorsot bele kellene zsúfolni.
 
-This theme is written in vanilla JavaScript (+ TypeScript for type checking) and a little bit of ReactJS for some interactions. TailwindCSS is used for styling; and Markdown is used for blog contents.
+A YouTube-on nincs műsoridő. Ha egy történet tizenhét percet érdemel, tizenhét percet kap.
 
-## Features
+## Mit ígérünk?
 
-Here are certain features of this site.
+**Odamegyünk.** Nem telefonon kérdezünk, nem stúdióból elemzünk. Elmegyünk Nógrádba, Borsodba, oda, ahol a történet van.
 
-- fully responsive and accessible
-- SEO-friendly
-- light & dark mode
-- fuzzy search
-- super fast performance
-- draft posts
-- pagination
-- sitemap & rss feed
-- highly customizable
+**Meghallgatjuk.** A riportjaink szereplői nem illusztrációk egy előre megírt tézishez. Ők a történet. Addig maradunk, amíg elmondják.
 
-If you like this theme, you can star/contribute to the [repo](https://github.com/satnaing/astro-paper).  
-Or you can even give any feedback via my [email](mailto:contact@satnaing.dev).
+**Nem húzunk rá tanulságot.** A valóság bonyolultabb, mint egy cím. Megmutatjuk, amit láttunk — a következtetés a tiéd.
+
+**Nincs clickbait.** A címeink azt ígérik, ami a videóban van. Se többet, se kevesebbet.
+
+## Miből él a Kavics?
+
+A KAVICS független. Politikai pártoktól, állami szervektől nem fogadunk el pénzt. Ha ez változik, itt olvasol róla először.
+
+## Kapcsolat
+
+Sajtómegkeresés, témajavaslat, együttműködés: **[info@kavicsmedia.hu](mailto:info@kavicsmedia.hu)**
+
+Ha olyan történetről tudsz, aminek szerinted a Kavicsnál a helye — írj. Minden levelet elolvasunk.
+
+## Hol találsz minket?
+
+- [YouTube](https://www.youtube.com/@kavicsmedia)
+- [Instagram](https://www.instagram.com/kavics_media/)
+- [TikTok](https://www.tiktok.com/@kavics_media)

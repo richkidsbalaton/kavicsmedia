@@ -8,7 +8,7 @@ import Hr from "@components/Hr.astro";
 import Card from "@components/Card";
 import Socials from "@components/Socials.astro";
 import getSortedPosts from "@utils/getSortedPosts";
-import { SOCIALS } from "@config";
+import { SITE, SOCIALS } from "@config";
 
 const posts = await getCollection("blog");
 
@@ -17,19 +17,41 @@ const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
 const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
 
 const socialCount = SOCIALS.filter(social => social.active).length;
+
+// Organization JSON-LD a főoldalon
+const organizationSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "NewsMediaOrganization",
+  name: "KAVICS",
+  url: SITE.website,
+  logo: new URL("/assets/logo.png", SITE.website).href,
+  description: SITE.desc,
+  email: "info@kavicsmedia.hu",
+  sameAs: [
+    "https://www.youtube.com/@kavicsmedia",
+    "https://www.tiktok.com/@kavics_media",
+    "https://www.instagram.com/kavics_media/",
+  ],
+});
 ---
 
-<Layout>
+<Layout title={`KAVICS — Riportok a magyar rögvalóságról`}>
+  <script
+    type="application/ld+json"
+    set:html={organizationSchema}
+    slot="head"
+    is:inline
+  />
   <Header />
   <main id="main-content">
     <section id="hero">
-      <h1>Mingalaba</h1>
+      <h1>Megmutatjuk, ami van.</h1>
       <a
         target="_blank"
         href="/rss.xml"
         class="rss-link"
-        aria-label="rss feed"
-        title="RSS Feed"
+        aria-label="RSS csatorna"
+        title="RSS csatorna"
       >
         <svg xmlns="http://www.w3.org/2000/svg" class="rss-icon"
           ><path
@@ -38,33 +60,43 @@ const socialCount = SOCIALS.filter(social => social.active).length;
             d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"
           ></path><circle cx="6" cy="18" r="2"></circle>
         </svg>
-        <span class="sr-only">RSS Feed</span>
+        <span class="sr-only">RSS csatorna</span>
       </a>
 
       <p>
-        AstroPaper is a minimal, responsive, accessible and SEO-friendly Astro
-        blog theme. This theme follows best practices and provides accessibility
-        out of the box. Light and dark mode are supported by default. Moreover,
-        additional color schemes can also be configured.
+        Társadalmi riportok, tényfeltárás, dokumentarizmus — Magyarország azon
+        részeiről, ahová a kamera ritkán jut el. Kommentár helyett kérdezünk.
+        Ítélet helyett odamegyünk.
+      </p>
+      <div class="hero-buttons">
+        <LinkButton
+          href="/posts/"
+          className="underline decoration-dashed underline-offset-4 hover:text-skin-accent"
+        >
+          Riportjaink →
+        </LinkButton>
+        <LinkButton
+          href="/about/"
+          className="underline decoration-dashed underline-offset-4 hover:text-skin-accent"
+        >
+          Miért csináljuk? →
+        </LinkButton>
+      </div>
+    </section>
+
+    <Hr />
+
+    <section id="mit-csinalunk">
+      <h2>Mit csinálunk?</h2>
+      <p>
+        A KAVICS egy független dokumentarista YouTube-csatorna. Riportjainkban
+        Magyarország falvait, közösségeit és társadalmi jelenségeit mutatjuk be
+        — szenzáció és leegyszerűsítés nélkül.
       </p>
       <p>
-        Read the blog posts or check
-        <LinkButton
-          className="underline decoration-dashed underline-offset-4 hover:text-skin-accent"
-          href="https://github.com/satnaing/astro-paper#readme"
-        >
-          README
-        </LinkButton> for more info.
+        Nem mondjuk meg, mit gondolj. Elmegyünk, végighallgatjuk az embereket,
+        és úgy adjuk tovább, ahogy elmondták. A többi a nézőé.
       </p>
-      {
-        // only display if at least one social link is enabled
-        socialCount > 0 && (
-          <div class="social-wrapper">
-            <div class="social-links">Social Links:</div>
-            <Socials />
-          </div>
-        )
-      }
     </section>
 
     <Hr />
@@ -73,7 +105,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       featuredPosts.length > 0 && (
         <>
           <section id="featured">
-            <h2>Featured</h2>
+            <h2>Kiemelt riportok</h2>
             <ul>
               {featuredPosts.map(({ data, slug }) => (
                 <Card
@@ -92,11 +124,11 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     {
       recentPosts.length > 0 && (
         <section id="recent-posts">
-          <h2>Recent Posts</h2>
+          <h2>Legfrissebb riportok</h2>
           <ul>
             {recentPosts.map(
               ({ data, slug }, index) =>
-                index < 4 && (
+                index < 3 && (
                   <Card
                     href={`/posts/${slug}/`}
                     frontmatter={data}
@@ -111,7 +143,7 @@ const socialCount = SOCIALS.filter(social => social.active).length;
 
     <div class="all-posts-btn-wrapper">
       <LinkButton href="/posts/">
-        All Posts
+        Összes riport
         <svg xmlns="http://www.w3.org/2000/svg"
           ><path
             d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z"
@@ -119,6 +151,26 @@ const socialCount = SOCIALS.filter(social => social.active).length;
         </svg>
       </LinkButton>
     </div>
+
+    <Hr />
+
+    <section id="hol-talalsz">
+      <h2>Hol találsz minket?</h2>
+      <p>
+        A KAVICS elsősorban a YouTube-on él, de ott vagyunk mindenhol, ahol ti.
+      </p>
+      <p>
+        Új riportjainkról elsőként értesülhetsz, ha feliratkozol a
+        YouTube-csatornára.
+      </p>
+      {
+        socialCount > 0 && (
+          <div class="social-wrapper">
+            <Socials />
+          </div>
+        )
+      }
+    </section>
   </main>
 
   <Footer />
@@ -141,21 +193,29 @@ const socialCount = SOCIALS.filter(social => social.active).length;
   #hero p {
     @apply my-2;
   }
+  .hero-buttons {
+    @apply mt-4 flex flex-wrap gap-4;
+  }
   .social-wrapper {
     @apply mt-4 flex flex-col sm:flex-row sm:items-center;
-  }
-  .social-links {
-    @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
   }
 
   /* ===== Featured & Recent Posts Sections ===== */
   #featured,
-  #recent-posts {
+  #recent-posts,
+  #mit-csinalunk,
+  #hol-talalsz {
     @apply pb-6 pt-12;
   }
   #featured h2,
-  #recent-posts h2 {
+  #recent-posts h2,
+  #mit-csinalunk h2,
+  #hol-talalsz h2 {
     @apply text-2xl font-semibold tracking-wide;
+  }
+  #mit-csinalunk p,
+  #hol-talalsz p {
+    @apply my-2;
   }
   .all-posts-btn-wrapper {
     @apply my-8 text-center;
