@@ -29,6 +29,7 @@ module.exports = {
         skin: {
           fill: withOpacity("--color-fill"),
           accent: withOpacity("--color-accent"),
+          soft: withOpacity("--color-accent-soft"),
           inverted: withOpacity("--color-text-base"),
           card: withOpacity("--color-card"),
           "card-muted": withOpacity("--color-card-muted"),
@@ -54,7 +55,9 @@ module.exports = {
         transparent: "transparent",
       },
       fontFamily: {
-        mono: ["IBM Plex Mono", "monospace"],
+        sans: ["Archivo", "ui-sans-serif", "system-ui", "sans-serif"],
+        display: ["Archivo Narrow", "Archivo", "ui-sans-serif", "sans-serif"],
+        mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
       },
 
       typography: {
