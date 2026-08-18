@@ -44,9 +44,45 @@ const layoutProps = {
   ogImage: ogUrl,
   scrollSmooth: true,
 };
+
+// NewsArticle JSON-LD
+const articleSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  headline: title,
+  description,
+  image: [ogUrl],
+  datePublished: pubDatetime.toISOString(),
+  ...(modDatetime && { dateModified: modDatetime.toISOString() }),
+  inLanguage: "hu",
+  author: {
+    "@type": "Organization",
+    name: author,
+    url: SITE.website,
+  },
+  publisher: {
+    "@type": "Organization",
+    name: SITE.title,
+    url: SITE.website,
+    logo: {
+      "@type": "ImageObject",
+      url: new URL("/assets/logo.png", SITE.website).href,
+    },
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": canonicalURL ?? new URL(Astro.url.pathname, SITE.website).href,
+  },
+});
 ---
 
 <Layout {...layoutProps}>
+  <script
+    type="application/ld+json"
+    set:html={articleSchema}
+    slot="head"
+    is:inline
+  />
   <Header />
 
   <!-- <div class="progress-container fixed top-0 z-10 h-1 w-full bg-skin-fill">
